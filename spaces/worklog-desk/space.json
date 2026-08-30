@@ -1,0 +1,21 @@
+{
+  "id": "worklog-desk",
+  "name": { "zh": "汇报台", "en": "Worklog Desk" },
+  "icon": "file-text",
+  "version": "1.0.0",
+  "layout": {
+    "left": [{ "type": "plugin:worklog-reporter:sources" }],
+    "main": [
+      { "type": "plugin:worklog-reporter:compose" },
+      { "type": "plugin:worklog-reporter:archive" }
+    ],
+    "right": [{ "type": "chat" }]
+  },
+  "requires": {
+    "views": [
+      "plugin:worklog-reporter:sources",
+      "plugin:worklog-reporter:compose",
+      "plugin:worklog-reporter:archive"
+    ]
+  }
+}

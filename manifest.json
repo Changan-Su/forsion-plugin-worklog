@@ -1,0 +1,58 @@
+{
+  "id": "worklog-reporter",
+  "name": "汇报生成器",
+  "nameEn": "WorklogReporter",
+  "version": "1.0.1",
+  "apiVersion": 1,
+  "main": "main.js",
+  "description": "从本机活动日志(~/.forsion/activity,dev 为 ~/.forsion-dev)扫出你这周动过的会话 / 笔记 / 文件;你勾选后,仅被勾选的条目连同对应笔记的正文片段发往你已登录的 Forsion 后端生成草稿;产物落笔记库 <工作文件夹>/Reports/YYYY-Www.md。不上传未勾选内容,不做推送、不常驻、不联系第三方服务。",
+  "descriptionEn": "Scans your local activity log (~/.forsion/activity, or ~/.forsion-dev in dev mode) for the chats, notes and files you actually touched this week; only the items you tick — together with excerpts of the notes they point at — are sent to the Forsion backend you are already signed in to, which drafts the report. Output lands in your vault at <work folder>/Reports/YYYY-Www.md. Nothing unticked is uploaded; no push notifications, no background daemon, no third-party service.",
+  "events": [
+    { "name": "scan", "label": "扫描本周素材" },
+    { "name": "generate", "label": "生成汇报" },
+    { "name": "manual", "label": "手工补录素材" }
+  ],
+  "onboarding": {
+    "intro": "周报难写不是不会写,是想不起来自己这周干了什么 —— 活动日志里本来就有答案。按需扫一遍本机活动日志,勾选真正动过的会话 / 笔记 / 文件,连同被点名笔记的正文片段一起交给模型,直接出一份不用大改就能交的草稿。",
+    "steps": [
+      {
+        "title": "确认工作文件夹",
+        "description": "插件详情页的「工作文件夹」设置决定产物落在笔记库哪里。报告写 <工作文件夹>/Reports/YYYY-Www.md(普通 Markdown 笔记),机器态素材档案写隐藏目录 <工作文件夹>/.worklog/。"
+      },
+      {
+        "title": "打开「汇报台」Space",
+        "description": "工作台切到「汇报台」:左列「本周素材」、主区「汇报草稿」与「历史归档」、右侧对话。也可以用命令面板「汇报生成器:打开」只开草稿视图。"
+      },
+      {
+        "title": "扫描并勾选素材",
+        "description": "在「本周素材」点「扫描本周素材」:插件让引擎只读 cat 本周 7 天的两处活动日志,自己在本地解析、过滤掉插件心跳,按日分组列出来。逐条勾选,点条目上的回链可以跳回那篇笔记。"
+      },
+      {
+        "title": "生成草稿并按需手工补录",
+        "description": "回到「汇报草稿」选模板、点「生成草稿」。日志看不见的事(开了个会、和谁对齐了目标)在「本周素材」底部手工补录一条即可,它是用户数据,重扫永不丢。"
+      }
+    ],
+    "en": {
+      "intro": "Weekly reports are hard because you cannot remember what you did, not because you cannot write. Your activity log already knows. Scan it on demand, tick the chats / notes / files that actually count, and let the model turn them — plus excerpts of the notes they point at — into a draft you can hand in with light edits.",
+      "steps": [
+        {
+          "title": "Confirm the work folder",
+          "description": "The plugin's \"work folder\" setting decides where output lands in your vault. Reports go to <work folder>/Reports/YYYY-Www.md as plain Markdown notes; machine-readable material lives in the hidden <work folder>/.worklog/ directory."
+        },
+        {
+          "title": "Open the Worklog Desk space",
+          "description": "Switch the workbench to \"Worklog Desk\": Material on the left, Draft and Archive in the main area, chat on the right. Or use the command palette entry \"WorklogReporter: Open\" to open just the draft view."
+        },
+        {
+          "title": "Scan and tick the material",
+          "description": "In Material, hit \"Scan this week\": the plugin has the engine read-only cat this week's seven daily activity logs from both home directories, then parses and filters plugin heartbeats locally and groups the rest by day. Tick what counts; click a row's back-link to jump to that note."
+        },
+        {
+          "title": "Generate, then fill the gaps by hand",
+          "description": "Back in Draft, pick a template and hit \"Generate draft\". Anything the log cannot see (a meeting, an alignment call) goes in as a manual entry at the bottom of Material — manual entries are your data and survive every re-scan."
+        }
+      ]
+    },
+    "settings": true
+  }
+}
