@@ -2,6 +2,7 @@
   "id": "worklog-desk",
   "name": { "zh": "汇报台", "en": "Worklog Desk" },
   "icon": "file-text",
+  "iconFile": "icon.png",
   "version": "1.0.0",
   "layout": {
     "left": [{ "type": "plugin:worklog-reporter:sources" }],
